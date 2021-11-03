@@ -33,7 +33,7 @@ public class sold_items {
         return user;
     }
 
-    public void setUser(String name) {
+    public void setUser(String user) {
         this.user = user;
     }
 
