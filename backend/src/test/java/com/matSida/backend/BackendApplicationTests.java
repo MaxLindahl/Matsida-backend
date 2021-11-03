@@ -1,4 +1,4 @@
-package com.matSida.backend;
+package com.matsida.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
