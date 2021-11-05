@@ -1,10 +1,12 @@
 package com.matsida.backend;
 
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/sql") // This means URL's start with /sql (after Application path)
@@ -27,6 +29,15 @@ public class MainController {
         n.setBadDate(Date.valueOf(bad_date));
         sold_itemsRepository.save(n);
         return "Saved";
+    }
+
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @GetMapping(path="/getItemsFrom")
+    public @ResponseBody JSONObject getItemsFromUser(@RequestParam String user){
+        List<sold_items> itemList = sold_itemsRepository.getItemsByUser(user);
+        JSONObject jo = new JSONObject();
+        jo.appendField("Items: ", itemList);
+        return jo;
     }
 
     @CrossOrigin(origins = "http://127.0.0.1:5500")
