@@ -36,7 +36,7 @@ public class MainController {
     public @ResponseBody JSONObject getItemsFromUser(@RequestParam String user){
         List<sold_items> itemList = sold_itemsRepository.getItemsByUser(user);
         JSONObject jo = new JSONObject();
-        jo.appendField("Items: ", itemList);
+        jo.appendField("Items", itemList);
         return jo;
     }
 
